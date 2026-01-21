@@ -1,588 +1,240 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ภูรินท์ เรียบร้อย - Personal Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Phurin reabroi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #001a4d;
-            --secondary-color: #003399;
-            --accent-color: #ffffff;
-            --text-dark: #001a4d;
-            --text-light: #666666;
-            --bg-light: #f8f9fa;
-            --glass-bg: rgba(255, 255, 255, 0.7);
-            --shadow: 0 8px 32px rgba(0, 26, 77, 0.1);
-            --shadow-hover: 0 12px 48px rgba(0, 26, 77, 0.15);
-            --profile-image-url: url('https://via.placeholder.com/140?text=Profile');
-        }
-
+        /* --- Retro Page Styles --- */
         body {
-            font-family: 'Kanit', 'Prompt', sans-serif;
-            background: linear-gradient(135deg, #001a4d 0%, #0033cc 100%);
-            color: var(--text-dark);
+            font-family: 'Courier New', Courier, monospace; 
+            background-color: #2b2b2b; 
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 20px 0;
+            background-image: radial-gradient(#333 15%, transparent 16%);
+            background-size: 20px 20px;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 2.5fr;
-            gap: 30px;
-            background: transparent;
-        }
-
-        /* ===== SIDEBAR ===== */
-        .sidebar {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px 30px;
-            box-shadow: var(--shadow);
-            height: fit-content;
-            position: sticky;
-            top: 20px;
-        }
-
-        .profile-image {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 25px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--secondary-color), #0051ff);
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            gap: 25px; 
+            width: 90%;
+            max-width: 500px;
+        }
+
+        /* --- Retro Box Design --- */
+        .box {
+            background: #c0bda2; 
+            padding: 30px;
+            border: 3px solid #000;
+            box-shadow: 8px 8px 0px #000; 
+            border-radius: 0; 
+            text-align: center;
+            transition: transform 0.1s;
+        }
+
+        .box:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 10px 10px 0px #000;
+        }
+
+        /* --- Typography & Typewriter Animation --- */
+        .h1-wrapper {
+            display: flex;
             justify-content: center;
-            font-size: 60px;
-            font-weight: bold;
-            color: white;
-            box-shadow: 0 8px 20px rgba(0, 26, 77, 0.2);
-            border: 3px solid var(--accent-color);
-            overflow: hidden;
-            object-fit: cover;
-        }
-
-        .profile-image.with-img {
-            background: transparent;
-            font-size: 0;
-        }
-
-        .profile-name {
-            text-align: center;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 8px;
-        }
-
-        .profile-position {
-            text-align: center;
-            font-size: 14px;
-            color: var(--secondary-color);
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .profile-bio {
-            text-align: center;
-            font-size: 13px;
-            color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            border-top: 2px solid rgba(0, 26, 77, 0.1);
-            padding-top: 25px;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 15px;
-            background: rgba(0, 51, 153, 0.1);
-            border-radius: 10px;
-            text-decoration: none;
-            color: var(--text-dark);
-            font-size: 13px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .contact-link:hover {
-            background: rgba(0, 51, 153, 0.2);
-            transform: translateX(5px);
-        }
-
-        /* ===== MAIN CONTENT ===== */
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 35px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-2px);
-        }
-
-        /* ===== INTRO SECTION ===== */
-        .intro-card {
-            background: linear-gradient(135deg, var(--glass-bg), rgba(0, 51, 153, 0.05));
-        }
-
-        .intro-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .typing-text {
-            font-size: 16px;
-            color: var(--text-light);
-            line-height: 1.8;
-            margin-bottom: 20px;
-            min-height: 40px;
+            color: #000; 
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            text-decoration: none; 
+            font-size: 2em;
+            font-weight: bold;
+            overflow: hidden; 
+            border-right: 4px solid black; 
+            white-space: nowrap; 
+            margin: 0;
+            animation: 
+                typing 2s steps(14, end),
+                blink-caret 0.75s step-end infinite;
         }
 
-        .typing-cursor {
-            animation: blink 1s infinite;
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
         }
 
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: black; }
         }
 
-        .tech-stack {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-            margin-top: 20px;
+        h2 { margin: 0 0 20px 0; font-size: 1.1rem; color: #333; font-weight: bold; }
+        p { color: #000; line-height: 1.6; font-weight: 600; }
+
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%; 
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid #000;
+            box-shadow: 4px 4px 0px #000;
         }
 
-        .tech-badge {
-            background: rgba(0, 51, 153, 0.15);
-            border: 1px solid rgba(0, 51, 153, 0.3);
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--secondary-color);
-            text-align: center;
+        /* --- Retro Buttons (Socials) --- */
+        .social-links { display: flex; flex-direction: column; gap: 15px; }
+        
+        .social-btn {
+            display: flex; align-items: center; justify-content: center;
+            text-decoration: none; color: white; padding: 12px;
+            font-weight: bold; font-size: 1.1rem;
+            border: 2px solid #000; border-radius: 0; 
+            box-shadow: 4px 4px 0px #000; 
+            transition: all 0.1s;
         }
+        
+        .social-btn:hover { 
+            transform: translate(2px, 2px); 
+            box-shadow: 2px 2px 0px #000;
+        }
+        
+        .social-btn i { margin-right: 10px; font-size: 1.2rem; }
+        
+        .github { background-color: #333; }
+        .facebook { background-color: #3b5998; }
+        .instagram { background: #d62976; }
 
-        /* ===== PROJECTS SECTION ===== */
-        .section-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 20px;
+        /* --- Retro Skills --- */
+        .skills-wrapper { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .skill-badge {
+            background-color: #fff; color: #000; padding: 8px 16px;
+            border: 2px solid #000; border-radius: 0; box-shadow: 3px 3px 0px #000;
+            font-size: 0.9rem; font-weight: 800;
+        }
+        .html-skill i { color: #e34c26; }
+        .css-skill i { color: #264de4; }
+        .cpp-skill i { color: #00599C; } 
+        .python-skill i { color: #3776ab; }
+        .git-skill i { color: #f05032; }
+
+        /* --- NEW: Project Styles --- */
+        .project-list {
             display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            flex-direction: column;
+            gap: 15px;
         }
 
         .project-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(0, 51, 153, 0.05));
-            border: 1px solid rgba(0, 51, 153, 0.15);
-            padding: 20px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            background-color: #fff; /* White looks like a paper document */
+            border: 2px solid #000;
+            padding: 15px;
+            text-align: left;
+            text-decoration: none;
+            color: #000;
+            box-shadow: 4px 4px 0px #000;
+            transition: all 0.1s;
+            display: block;
         }
 
         .project-card:hover {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(0, 51, 153, 0.1));
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(0, 51, 153, 0.15);
-            border-color: rgba(0, 51, 153, 0.3);
+            transform: translate(2px, 2px); /* Click effect */
+            box-shadow: 2px 2px 0px #000;
+            background-color: #f4f4f4;
         }
 
-        .project-name {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 8px;
+        .project-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 5px;
         }
+        
+        .project-title i { margin-right: 8px; }
 
         .project-desc {
-            font-size: 13px;
-            color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 12px;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
-        .tag {
-            display: inline-block;
-            background: rgba(0, 51, 153, 0.2);
-            color: var(--secondary-color);
-            padding: 5px 10px;
-            border-radius: 6px;
-            font-size: 12px;
+            font-size: 0.9rem;
+            color: #555;
             font-weight: 500;
         }
 
-        .project-link {
-            display: inline-block;
-            padding: 8px 16px;
-            background: var(--secondary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .project-link:hover {
-            background: var(--primary-color);
-            transform: translateX(3px);
-        }
-
-        /* ===== CONTRIBUTION GRAPH ===== */
-        .contribution-graph {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
-            gap: 6px;
-            margin-top: 20px;
-        }
-
-        .contribution-box {
-            aspect-ratio: 1;
-            border-radius: 4px;
-            background: rgba(0, 51, 153, 0.1);
-            border: 1px solid rgba(0, 51, 153, 0.15);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .contribution-box:hover {
-            transform: scale(1.1);
-            background: rgba(0, 51, 153, 0.4);
-            z-index: 10;
-        }
-
-        .contribution-box.level-1 {
-            background: rgba(0, 150, 100, 0.2);
-        }
-
-        .contribution-box.level-2 {
-            background: rgba(0, 150, 100, 0.4);
-        }
-
-        .contribution-box.level-3 {
-            background: rgba(0, 150, 100, 0.6);
-        }
-
-        .contribution-box.level-4 {
-            background: rgba(0, 150, 100, 0.9);
-        }
-
-        .contribution-box:hover.level-1 {
-            background: rgba(0, 150, 100, 0.4);
-        }
-
-        .contribution-box:hover.level-2 {
-            background: rgba(0, 150, 100, 0.6);
-        }
-
-        .contribution-box:hover.level-3 {
-            background: rgba(0, 150, 100, 0.8);
-        }
-
-        .contribution-box:hover.level-4 {
-            background: rgba(0, 150, 100, 1);
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .sidebar {
-                position: static;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .intro-title {
-                font-size: 22px;
-            }
-
-            .card {
-                padding: 25px;
-            }
-
-            .profile-image {
-                width: 100px;
-                height: 100px;
-                font-size: 45px;
-            }
-
-            .profile-name {
-                font-size: 20px;
-            }
-
-            .tech-stack {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .contribution-graph {
-                grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-
-            .sidebar,
-            .card {
-                padding: 20px;
-                border-radius: 12px;
-            }
-
-            .intro-title {
-                font-size: 18px;
-            }
-
-            .typing-text {
-                font-size: 14px;
-            }
-
-            .section-title {
-                font-size: 18px;
-            }
-
-            .project-name {
-                font-size: 14px;
-            }
-
-            .tech-stack {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <!-- SIDEBAR -->
-        <aside class="sidebar">
-            <div class="profile-image" id="profileImage"></div>
-            <h1 class="profile-name">ภูรินท์ เรียบร้อย</h1>
-            <p class="profile-position">นักศึกษา</p>
-            <p class="profile-bio">ศึกษาอยู่ที่มหาวิทยาลัยราชภัฏอุดรธานี ชอบเขียนโค้ดและเรียนรู้เทคโนโลยีใหม่ๆ</p>
-            
-            <div class="contact-links">
-                <a href="https://github.com" class="contact-link">
-                    <span>🔗</span>
-                    <span>GitHub</span>
+        
+        <div class="box">
+            <img src="image/IMG_6885.jpg" alt="Profile Picture" class="profile-pic">
+            <div class="h1-wrapper">
+                <div class="typing-text">Phurin reabroi</div>
+            </div>
+            <h2>&lt;Student /&gt;</h2>
+            <div style="height: 2px; background: #000; width: 50%; margin: 20px auto;"></div>
+            <p>
+                Hello! I am a passionate coder who loves building simple and useful websites. 
+                Welcome to my personal space!
+            </p>
+        </div>
+
+        <div class="box">
+            <h2>MY SKILLS</h2>
+            <div class="skills-wrapper">
+                <span class="skill-badge html-skill"><i class="fab fa-html5"></i> HTML</span>
+                <span class="skill-badge css-skill"><i class="fab fa-css3-alt"></i> CSS</span>
+                <span class="skill-badge cpp-skill"><i class="fas fa-code"></i> C++</span>
+                <span class="skill-badge python-skill"><i class="fab fa-python"></i> Python</span>
+                <span class="skill-badge git-skill"><i class="fab fa-git-alt"></i> Git</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <h2>MY PROJECTS</h2>
+            <div class="project-list">
+                
+                <a href="https://github.com/rattatuye-code/Phurin_Reabroi_github.io" target="_blank" class="project-card">
+                    <span class="project-title"><i class="fas fa-folder-open"></i> Portfolio Website</span>
+                    <span class="project-desc">The source code for this retro website layout, Built with HTML/CSS.</span>
                 </a>
-                <a href="mailto:email@example.com" class="contact-link">
-                    <span>✉️</span>
-                    <span>Email</span>
+
+                <a href="https://github.com/rattatuye-code/University_Projects" target="_blank" class="project-card">
+                    <span class="project-title"><i class="fas fa-folder"></i> University_Projects</span>
+                    <span class="project-desc">A collection of university projects and assignments.</span>
                 </a>
-                <a href="https://linkedin.com" class="contact-link">
-                    <span>💼</span>
-                    <span>LinkedIn</span>
+
+                <a href="https://github.com/rattatuye-code/Roblox_Project" target="_blank" class="project-card">
+                    <span class="project-title"><i class="fas fa-gamepad"></i> Roblox_Project</span>
+                    <span class="project-desc">A Roblox game project built with Lua.</span>
                 </a>
-                <a href="#" class="contact-link">
-                    <span>📍</span>
-                    <span>Udon Thani, Thailand</span>
+
+            </div>
+        </div>
+
+        <div class="box">
+            <h2>Social Media</h2>
+            <div class="social-links">
+                <a href="https://github.com/rattatuye-code" target="_blank" class="social-btn github">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.facebook.com/phurin.reabroi/" target="_blank" class="social-btn facebook">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+                <a href="https://www.instagram.com/phurin_reabroi/" target="_blank" class="social-btn instagram">
+                    <i class="fab fa-instagram"></i> Instagram
                 </a>
             </div>
-        </aside>
+        </div>
 
-        <!-- MAIN CONTENT -->
-        <main class="main-content">
-            <!-- INTRO SECTION -->
-            <section class="card intro-card">
-                <h2 class="intro-title">สวัสดี! ผมชื่อ ภูรินท์ 👋</h2>
-                <div class="typing-text" id="typingText"></div>
-                <div class="tech-stack">
-                    <div class="tech-badge">💻 HTML & CSS</div>
-                    <div class="tech-badge">⚙️ JavaScript</div>
-                    <div class="tech-badge">🎨 UI/UX Design</div>
-                    <div class="tech-badge">📱 Responsive Design</div>
-                </div>
-            </section>
-
-            <!-- PROJECTS SECTION -->
-            <section class="card">
-                <h2 class="section-title">📌 โปรเจกต์ที่น่าสนใจ</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <h3 class="project-name">📸 Photo Gallery</h3>
-                        <p class="project-desc">แพลตฟอร์มแสดงภาพถ่ายด้วยเอฟเฟกต์ Hover ที่สวยงาม</p>
-                        <div class="project-tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                        <a href="#" class="project-link">ดูผลงาน →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <h3 class="project-name">🎵 Music Player</h3>
-                        <p class="project-desc">เครื่องเล่นเพลงโต้ตอบพร้อม Playlist และ Visualizer</p>
-                        <div class="project-tags">
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">Web Audio API</span>
-                            <span class="tag">CSS</span>
-                        </div>
-                        <a href="#" class="project-link">ดูผลงาน →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <h3 class="project-name">📝 Todo App</h3>
-                        <p class="project-desc">แอปพลิเคชันจัดการรายการสิ่งที่ต้องทำด้วย Local Storage</p>
-                        <div class="project-tags">
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">localStorage</span>
-                            <span class="tag">Responsive</span>
-                        </div>
-                        <a href="#" class="project-link">ดูผลงาน →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <h3 class="project-name">🌤️ Weather App</h3>
-                        <p class="project-desc">แอปดูอากาศแบบ Real-time พร้อมค้นหาตามพื้นที่</p>
-                        <div class="project-tags">
-                            <span class="tag">API Integration</span>
-                            <span class="tag">Geolocation</span>
-                            <span class="tag">Async/Await</span>
-                        </div>
-                        <a href="#" class="project-link">ดูผลงาน →</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CONTRIBUTION GRAPH -->
-            <section class="card">
-                <h2 class="section-title">📊 Contribution Activity</h2>
-                <p style="color: var(--text-light); font-size: 13px; margin-bottom: 15px;">เรียงตามสปดาห์ที่ผ่านมา 52 สัปดาห์</p>
-                <div class="contribution-graph" id="contributionGraph"></div>
-            </section>
-        </main>
     </div>
 
-    <script>
-        // ===== TYPING EFFECT =====
-        function typeWriter() {
-            const text = "ผมชอบเขียนโค้ดและเรียนรู้เทคโนโลยีใหม่ๆ 🚀 ปัจจุบันกำลังฝึกฝนทักษะการพัฒนาเว็บไซต์ และชอบสร้างสรรค์แนวคิดสร้างสรรค์ให้กลายเป็นความเป็นจริง";
-            const element = document.getElementById('typingText');
-            let index = 0;
-
-            function type() {
-                if (index < text.length) {
-                    element.innerHTML = text.substring(0, index + 1) + '<span class="typing-cursor">|</span>';
-                    index++;
-                    setTimeout(type, 30);
-                } else {
-                    element.innerHTML = text;
-                }
-            }
-
-            type();
-        }
-
-        // ===== CONTRIBUTION GRAPH GENERATOR =====
-        function generateContributionGraph() {
-            const graph = document.getElementById('contributionGraph');
-            const totalBoxes = 364; // 52 weeks × 7 days
-
-            for (let i = 0; i < totalBoxes; i++) {
-                const box = document.createElement('div');
-                box.className = 'contribution-box';
-                
-                const level = Math.floor(Math.random() * 5);
-                if (level > 0) {
-                    box.classList.add(`level-${level}`);
-                }
-
-                // Random date for tooltip simulation
-                const daysAgo = totalBoxes - i;
-                const date = new Date();
-                date.setDate(date.getDate() - daysAgo);
-                const dateStr = date.toLocaleDateString('th-TH');
-                const contributions = Math.floor(Math.random() * 8);
-
-                box.title = `${contributions} contributions on ${dateStr}`;
-                graph.appendChild(box);
-            }
-        }
-
-        // ===== PROFILE IMAGE UPLOAD =====
-        const profileImage = document.getElementById('profileImage');
-
-        // Load profile.jpg on page load
-        window.addEventListener('load', () => {
-            profileImage.style.backgroundImage = `url('./IMG_6885.jpg')`;
-            profileImage.style.backgroundSize = 'cover';
-            profileImage.style.backgroundPosition = 'center';
-            profileImage.classList.add('with-img');
-            profileImage.textContent = '';
-            typeWriter();
-            generateContributionGraph();
-        });
-
-        // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
